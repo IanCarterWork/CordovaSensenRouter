@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "./jsbundle",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "CommonJS",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true,
+        "moduleResolution": "node",
+    },
+
+	"include": [
+		"./sensenjs/"
+	]
+    
+}

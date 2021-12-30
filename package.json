@@ -1,0 +1,40 @@
+{
+  "name": "ian.sensen.router",
+  "displayName": "SensenRouter",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "Run TypeScript Watcher": "tsc -watch",
+    "Prepare": "cordova prepare -- --livereload",
+    "Run Project": "cordova run -- --livereload",
+    "Run Browser": "cordova run browser -- --livereload",
+    "Run iOS": "cordova run ios -- -w.config ./webpack.config.babel.js -l",
+    "Run Andoid": "cordova run android --livereload",
+    "Run Andoid With Port": "cordova run android -- --livereload --webpack.port=8888 --webpack.watch-content-base=false",
+    "Build Project": "cordova build -- --livereload",
+    "Build iOS": "cordova build ios -- --webpack.env.prod",
+    "Build Andoid": "cordova build android -- --webpack.mode=production",
+    "Build Browser": "cordova build browser -- --webpack.mode=development"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Ian Carter",
+  "license": "MIT",
+  "devDependencies": {
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-webpack": "^1.0.5",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.3"
+  },
+  "cordova": {
+    "platforms": [
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-webpack": {}
+    }
+  }
+}
