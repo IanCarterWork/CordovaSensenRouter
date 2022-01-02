@@ -1,14 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var view_1 = require("../core/view");
-var AboutView = new view_1.SensenView({
+const View_1 = require("../core/View");
+const AboutView = new View_1.SensenView({
     slug: 'about',
     source: 'about.html',
-    mount: function () {
-        alert('View Mounted');
+    controller: () => {
+        console.warn('View Init ');
     },
-    unmount: function () {
-        alert('View UnMounted');
+    mounted: () => {
+        console.warn('View Focused');
+    },
+    unmounted: () => {
+        console.warn('View Blurred');
     },
 });
 exports.default = AboutView;

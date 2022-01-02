@@ -1,0 +1,1 @@
+{"version":3,"file":"ViewControllerDependencies.js","sourceRoot":"","sources":["../../sensenjs/core/ViewControllerDependencies.ts"],"names":[],"mappings":";;;AAEA;IAOI;QAJA,YAAO,GAA8B,EAAE,CAAC;IAQxC,CAAC;IAID;;OAEG;IACH,iDAAM,GAAN,UAAO,IAAY,EAAE,KAAe;QAEhC,IAAI,CAAC,OAAO,CAAE,IAAI,CAAE,GAAG,KAAK,CAAA;QAE5B,OAAO,IAAI,CAAC;IAEhB,CAAC;IAIL,uCAAC;AAAD,CAAC,AA5BD,IA4BC;AA5BY,4EAAgC"}

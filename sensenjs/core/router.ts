@@ -1,5 +1,5 @@
-import { SensenTRouterConfig } from "./router.type";
-import { SensenView } from "./view";
+import { SensenTRouterConfig } from "./Router.type";
+import { SensenView } from "./View";
 
 
 export type SensenRouterViewStates = {
@@ -17,7 +17,7 @@ export class SensenRouter{
 
     routes: SensenRouterViewStates;
 
-    rootElement: HTMLElement;
+    root: HTMLElement;
 
     view: SensenView 
     
@@ -57,84 +57,112 @@ export class SensenRouter{
         
         if(this.config.default){
 
-            this.navigate(this.config.default)
+            this.navigate(location.hash ? location.hash.substr(1) : this.config.default)
 
         }
 
         return this;
 
     }
+
+
+
+    parseSlug(slug: string){
+
+        const ex = slug.split('?')
+
+        return {
+
+            name: ex[0],
+
+            search: ex[1]||''
+
+        }
+
+    }
     
     
 
     navigate(slug: string){
+
+        const pslug = this.parseSlug(slug)
+
+
+
+        /**
+         * Unmount last View
+         */
+        if(window.View instanceof SensenView){
+    
+            if('unmounted' in window.View){
+                    
+                window.View.unmounted(window.View.dependencies);
+                
+            }
+            
+        }
+
+        
         
         return new Promise((resolve: Function, reject: Function)=>{
     
-            this.view = this.routes[ slug ] || null;
-
-
-            console.log('View Object ', slug, this.view, this.routes )
+            this.view = this.routes[ pslug.name ] || null;
 
 
             if(this.view){
 
-                fetch(`./views/${slug}.html`)
+                fetch(`./views/${pslug.name}.html`)
+    
+                    .then(r=>r.text())
+                    
+                    .then(html=>{
+    
+                        const element = new DOMParser().parseFromString(html, 'text/html')
+                        
+                        const fragment = document.createElement('div')
+                        
+                        window.$SensenRLP.clean();
 
-                .then(r=>r.text())
+                        window.$SensenNodeRefVariables = {};
+
+
+                        Object.values( element.body.children ).map(c=>fragment.appendChild(c))
+                        
+                        this.view.render(fragment, this)
+    
+                        resolve(element);
+                        
+                        location.hash = slug;
+                    
                 
-                .then(html=>{
-
-                    const page = new DOMParser().parseFromString(html, 'text/html')
-                    
-                    console.log('View HTML ', page, html )
-
-                    location.hash = slug;
-
-                    this.parse(page.body)
-        
-                    resolve(page);
-
-                })
-
-                .catch(er=>{
-
-                    reject(er)
-
-                    alert('Page introuvable')
-                    
-                })
+                        if('mounted' in this.view){
+                
+                            this.view.mounted(this.view.dependencies);
+                            
+                        }
+                
+                    })
+    
+                    .catch(er=>{
+    
+                        reject(er);
+    
+                        throw (`SensenJS Router say :\n${ er }`)
+                        
+                    })
     
             }
 
             else{
 
-                alert('404 Erreur')
-                
+                throw (`SensenJS Router say route < \n${ slug } > not found`)
+                    
             }
             
         });
         
     }
 
-
-
-
-    parse(dom: HTMLElement){
-
-        if(this.rootElement){
-
-            this.rootElement.innerHTML = '';
-
-            this.rootElement.appendChild(dom)
-            
-        }
-
-        console.log('View HTML ', dom, this.rootElement )
-                    
-        
-    }
-    
     
     
 }

@@ -1,20 +1,19 @@
+import Sensen from "./core/framework";
 import AppRouter from "./router";
+
+'use strict';
 
 
 
 const SensenJSApp = (appRoot: HTMLElement)=>{
-
-    console.warn('App in ', appRoot, AppRouter)
     
-    // appRoot.innerHTML = 'Chargement...'
-
-
-    AppRouter.rootElement = appRoot;
+    AppRouter.root = appRoot;
 
     AppRouter.render()
     
 }
 
 
-//@ts-ignore
-window.SensenJSApp = SensenJSApp;
+
+Sensen.JS(SensenJSApp);
+

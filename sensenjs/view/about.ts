@@ -1,4 +1,4 @@
-import { SensenView } from "../core/view"
+import { SensenView } from "../core/View"
 
 
 
@@ -8,15 +8,21 @@ const AboutView = new SensenView({
 
     source: 'about.html',
 
-    mount: ()=>{
+    controller: ()=>{
 
-        alert('View Mounted')
+        console.warn('View Init ')
         
     },
     
-    unmount: ()=>{
+    mounted: ()=>{
         
-        alert('View UnMounted')
+        console.warn('View Focused')
+        
+    },
+    
+    unmounted: ()=>{
+        
+        console.warn('View Blurred')
         
     },
     

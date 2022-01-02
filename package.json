@@ -2,7 +2,7 @@
   "name": "ian.sensen.router",
   "displayName": "SensenRouter",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "A Cordova router système",
   "main": "index.js",
   "scripts": {
     "Run TypeScript Watcher": "tsc -watch",

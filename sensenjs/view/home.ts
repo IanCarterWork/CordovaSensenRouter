@@ -1,4 +1,5 @@
-import { SensenView } from "../core/view"
+import { SensenView } from "../core/View"
+
 
 
 
@@ -8,15 +9,34 @@ const HomeView = new SensenView({
 
     source: 'home.html',
 
-    mount: ()=>{
+    controller: ($: any)=>{
 
-        alert('View Mounted')
+
+        // setTimeout(()=>{
+
+        //     $.view.setVariable('postImage', './assets/images/ggn.png');
+
+        // }, 1000)
+
+        console.warn('View Controller :', $?.GET?.param )
+
+
         
     },
     
-    unmount: ()=>{
+
+
+    mounted: ()=>{
         
-        alert('View UnMounted')
+        console.warn('View Mounted')
+        
+    },
+    
+
+
+    unmounted: ()=>{
+        
+        console.warn('View UnMounted')
         
     },
     

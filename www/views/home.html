@@ -1,4 +1,28 @@
-<h1>Bonsoir Elvis</h1>
+<h1>Bonsoir IanCarter</h1>
+
+<h3>Passement de variable</h3>
+
+
+
+<div>
+
+    <img src="{{ postImage || './assets/images/ggn.senju.png' }}" data-test="{{ pid || 'no' }}" width="360" height="auto" alt="">
+
+</div>
+
+
+<button onclick="View.setVariable('postImage', './assets/images/ggn.png')" >Change Image</button>
+
+
+<p> {{ param || 'Aucune valeur indiqué' }} </p>
+
+
+<div>
+
+    {{ dataStack || 'Aucune donnée trouvée' }}
+
+</div>
+
 
 
 <a href="#about">Go to about</a>

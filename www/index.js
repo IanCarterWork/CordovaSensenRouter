@@ -4,9 +4,14 @@
 
 let isLoaded = false;
 
+
 function onDeviceReady(ev) {
 
     if(!isLoaded){
+
+        /**
+         * When Ready
+         */
 
         if('SensenJSApp' in window){
 
@@ -15,8 +20,6 @@ function onDeviceReady(ev) {
             window.SensenJSApp(app)
             
         }
-
-        console.log('Cordova is ready \n', window.SensenJSApp )
 
         isLoaded = true;
 
@@ -28,4 +31,5 @@ function onDeviceReady(ev) {
 
 
 document.addEventListener('deviceready', onDeviceReady, false);
+
 window.addEventListener('load', onDeviceReady);

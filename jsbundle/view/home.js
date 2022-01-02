@@ -1,14 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var view_1 = require("../core/view");
-var HomeView = new view_1.SensenView({
+const View_1 = require("../core/View");
+const HomeView = new View_1.SensenView({
     slug: 'home',
     source: 'home.html',
-    mount: function () {
-        alert('View Mounted');
+    controller: ($) => {
+        // setTimeout(()=>{
+        var _a;
+        //     $.view.setVariable('postImage', './assets/images/ggn.png');
+        // }, 1000)
+        console.warn('View Controller :', (_a = $ === null || $ === void 0 ? void 0 : $.GET) === null || _a === void 0 ? void 0 : _a.param);
     },
-    unmount: function () {
-        alert('View UnMounted');
+    mounted: () => {
+        console.warn('View Mounted');
+    },
+    unmounted: () => {
+        console.warn('View UnMounted');
     },
 });
 exports.default = HomeView;
